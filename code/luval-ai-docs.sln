@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "luval.ai.docs.common", "luv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "luval.ai.docs.terminal", "luval.ai.docs.terminal\luval.ai.docs.terminal.csproj", "{B5C7C3AA-379B-4EF5-9E0D-4D8D8A7689E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "luval.ai.docs.msft", "luval.ai.docs.msft\luval.ai.docs.msft.csproj", "{D7046F67-BE79-4558-B7C5-B20A22439F71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B5C7C3AA-379B-4EF5-9E0D-4D8D8A7689E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5C7C3AA-379B-4EF5-9E0D-4D8D8A7689E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5C7C3AA-379B-4EF5-9E0D-4D8D8A7689E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7046F67-BE79-4558-B7C5-B20A22439F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7046F67-BE79-4558-B7C5-B20A22439F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7046F67-BE79-4558-B7C5-B20A22439F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7046F67-BE79-4558-B7C5-B20A22439F71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

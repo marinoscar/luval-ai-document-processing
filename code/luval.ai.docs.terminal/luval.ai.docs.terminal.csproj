@@ -61,6 +61,10 @@
       <Project>{009a2fa6-6fe9-49e1-abc2-1b497e025496}</Project>
       <Name>luval.ai.docs.common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\luval.ai.docs.msft\luval.ai.docs.msft.csproj">
+      <Project>{d7046f67-be79-4558-b7c5-b20a22439f71}</Project>
+      <Name>luval.ai.docs.msft</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="luval-128x128.ico" />
