@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "luval.ai.docs.common", "luval.ai.docs.common\luval.ai.docs.common.csproj", "{009A2FA6-6FE9-49E1-ABC2-1B497E025496}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "luval.ai.docs.msft", "luval.ai.docs.msft\luval.ai.docs.msft.csproj", "{125AE33B-588B-49F4-8EF0-E2011556DCEB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "luval.ai.docs.terminal", "luval.ai.docs.terminal\luval.ai.docs.terminal.csproj", "{B5C7C3AA-379B-4EF5-9E0D-4D8D8A7689E9}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{009A2FA6-6FE9-49E1-ABC2-1B497E025496}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{009A2FA6-6FE9-49E1-ABC2-1B497E025496}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{009A2FA6-6FE9-49E1-ABC2-1B497E025496}.Release|Any CPU.Build.0 = Release|Any CPU
-		{125AE33B-588B-49F4-8EF0-E2011556DCEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{125AE33B-588B-49F4-8EF0-E2011556DCEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{125AE33B-588B-49F4-8EF0-E2011556DCEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{125AE33B-588B-49F4-8EF0-E2011556DCEB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B5C7C3AA-379B-4EF5-9E0D-4D8D8A7689E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B5C7C3AA-379B-4EF5-9E0D-4D8D8A7689E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5C7C3AA-379B-4EF5-9E0D-4D8D8A7689E9}.Release|Any CPU.ActiveCfg = Release|Any CPU

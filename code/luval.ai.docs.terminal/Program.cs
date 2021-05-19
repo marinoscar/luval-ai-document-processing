@@ -9,7 +9,7 @@ namespace luval.ai.docs.terminal
     /// <summary>
     /// Application entry point
     /// </summary>
-    class Program
+    public class Program
     {
         /// <summary>
         /// Main entry point to the application
