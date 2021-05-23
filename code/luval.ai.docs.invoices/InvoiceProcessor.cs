@@ -20,15 +20,23 @@ namespace luval.ai.docs.invoices
 
         protected virtual IInvoiceAnalyzer Analyzer { get; private set; }
 
-        public async Task AnalyzeDocumentToExcel(Stream document, string excelOutputFile, CancellationToken cancellationToken)
+
+
+        public async Task AnalyzeDocumentToExcelAsync(Stream document, string excelOutputFile, CancellationToken cancellationToken)
         {
             var result = await Analyzer.ExecuteAsync(document, cancellationToken);
-
+            CreateExcelFromResult(result.ToList(), excelOutputFile);
         }
 
-        private void CreateExcelFromResult(IList<RecognizedForm> forms, string fileName)
+        public void AnalyzeDocumentToExcel(Stream document, string excelOutputFile)
         {
-            var file = new FileInfo(fileName);
+            var res = AnalyzeDocumentToExcelAsync(document, excelOutputFile, CancellationToken.None);
+            res.Wait();
+        }
+
+        private void CreateExcelFromResult(IList<RecognizedForm> forms, string excelFileName)
+        {
+            var file = new FileInfo(excelFileName);
             using (var package = new ExcelPackage(file))
             {
                 for (int i = 0; i < forms.Count; i++)

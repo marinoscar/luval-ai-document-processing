@@ -1,5 +1,9 @@
-﻿using System;
+﻿using luval.ai.docs.invoices;
+using luval.ai.docs.msft.analyzer;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +26,7 @@ namespace luval.ai.docs.terminal
 
             RunAction(() =>
             {
-                DoAction(arguments);
+                ParseDocument(arguments);
 
             }, true);
         }
@@ -31,9 +35,16 @@ namespace luval.ai.docs.terminal
         /// Executes an action on the application
         /// </summary>
         /// <param name="arguments"></param>
-        static void DoAction(ConsoleSwitches arguments)
+        static void ParseDocument(ConsoleSwitches arguments)
         {
-            WriteLine("Hello World");
+            var doc = @"C:\Users\CH489GT\EY\ADT - General\6 - Future Processes Documentation\Wave 3\Accounts Payable\Sample Invoices\Ferguson Fire Invoice_89763812.pdf";
+            var output = @"C:\Users\CH489GT\EY\ADT - General\6 - Future Processes Documentation\Wave 3\Accounts Payable\Sample Invoices\ExcelResult\Ferguson.xlsx";
+            var invoiceAnalyzer = new InvoiceAnalyzer(ConfigurationManager.AppSettings["azure.recognizer.endpoint"], ConfigurationManager.AppSettings["azure.recognizer.key"]);
+            var procesor = new InvoiceProcessor(invoiceAnalyzer);
+            using (var stream = new StreamReader(doc))
+            {
+                procesor.AnalyzeDocumentToExcel(stream.BaseStream, output);
+            }
         }
 
         /// <summary>
