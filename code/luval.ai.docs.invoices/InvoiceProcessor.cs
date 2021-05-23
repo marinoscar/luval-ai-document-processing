@@ -1,5 +1,6 @@
 ﻿using Azure.AI.FormRecognizer.Models;
 using luval.ai.docs.msft.analyzer;
+using Newtonsoft.Json;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -58,13 +59,11 @@ namespace luval.ai.docs.invoices
             sheet.Cells[1, 4].Value = "Pages";
             sheet.Cells[1, 5].Value = "Key";
             sheet.Cells[1, 6].Value = "Name";
-            sheet.Cells[1, 7].Value = "Label Data Text";
-            sheet.Cells[1, 8].Value = "Label Data Page";
-            sheet.Cells[1, 9].Value = "Label Data Box";
-            sheet.Cells[1, 10].Value = "Value Type";
-            sheet.Cells[1, 11].Value = "Value";
-            sheet.Cells[1, 12].Value = "Value Data Text";
-            sheet.Cells[1, 13].Value = "Value Box";
+            sheet.Cells[1, 7].Value = "Confidence";
+            sheet.Cells[1, 8].Value = "Value Type";
+            sheet.Cells[1, 9].Value = "Value";
+            sheet.Cells[1, 10].Value = "Value Data Text";
+            sheet.Cells[1, 11].Value = "Value Box";
             var row = 2;
             foreach (var field in form.Fields)
             {
@@ -74,16 +73,17 @@ namespace luval.ai.docs.invoices
                 sheet.Cells[row, 4].Value = form.Pages.Count;
                 sheet.Cells[row, 5].Value = field.Key;
                 sheet.Cells[row, 6].Value = field.Value.Name;
-                sheet.Cells[row, 7].Value = field.Value.LabelData.Text;
-                sheet.Cells[row, 8].Value = field.Value.LabelData.PageNumber;
-                sheet.Cells[row, 9].Value = field.Value.LabelData.BoundingBox.ToString();
-                sheet.Cells[row, 10].Value = field.Value.Value.ValueType.ToString();
-                sheet.Cells[row, 11].Value = CastFieldValue(field.Value.Value);
-                sheet.Cells[row, 12].Value = field.Value.ValueData.Text;
-                sheet.Cells[row, 13].Value = field.Value.ValueData.BoundingBox.ToString();
+                sheet.Cells[row, 7].Value = field.Value.Confidence;
+                sheet.Cells[row, 8].Value = field.Value.Value.ValueType.ToString();
+                sheet.Cells[row, 9].Value = CastFieldValue(field.Value.Value);
+                if(field.Value.ValueData != null)
+                {
+                    sheet.Cells[row, 10].Value = field.Value.ValueData.Text;
+                    sheet.Cells[row, 11].Value = field.Value.ValueData.BoundingBox.ToString();
+                }
                 row++;
             }
-            sheet.Tables.Add(sheet.SelectedRange[1, 13, row - 1, 13], $"DocHeader-{count}");
+            sheet.Tables.Add(sheet.SelectedRange[1, 1, row - 1, 11], $"DocHeader{count}");
         }
 
         private object CastFieldValue(FieldValue value)
@@ -98,6 +98,10 @@ namespace luval.ai.docs.invoices
                     return value.AsFloat();
                 case FieldValueType.Int64:
                     return value.AsInt64();
+                case FieldValueType.List:
+                    return JsonConvert.SerializeObject(value.AsList(), Formatting.None);
+                case FieldValueType.Dictionary:
+                    return JsonConvert.SerializeObject(value.AsDictionary(), Formatting.None);
                 default:
                     return value.AsString();
             }
