@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\luval.ai.docs.common\luval.ai.docs.common.csproj" />
+    <ProjectReference Include="..\luval.ai.docs.msft\luval.ai.docs.msft.csproj" />
+  </ItemGroup>
+
+</Project>
