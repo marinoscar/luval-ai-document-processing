@@ -1,4 +1,5 @@
-﻿using Azure.AI.FormRecognizer;
+﻿using Azure;
+using Azure.AI.FormRecognizer;
 using Azure.AI.FormRecognizer.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,11 @@ namespace luval.ai.docs.msft.analyzer
     public class InvoiceAnalyzer
     {
 
+        public InvoiceAnalyzer(string endpoint, string key) : this(CreateClient(endpoint, key))
+        {
+
+        }
+
         public InvoiceAnalyzer(FormRecognizerClient client) : this(client, new RecognizeInvoicesOptions() { Locale = "en-US" })
         {
 
@@ -23,6 +29,13 @@ namespace luval.ai.docs.msft.analyzer
         {
             Client = client;
             Options = options;
+        }
+
+        private static FormRecognizerClient CreateClient(string endpoint, string key)
+        {
+            var credential = new AzureKeyCredential(key);
+            var client = new FormRecognizerClient(new Uri(endpoint), credential);
+            return client;
         }
 
         protected virtual FormRecognizerClient Client { get; private set; }
