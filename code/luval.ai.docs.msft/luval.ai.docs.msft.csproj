@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <UserSecretsId>460f8d3c-a4e2-416a-bb22-c01d4dd32eda</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.AI.FormRecognizer" Version="3.1.0-beta.4" />
+  </ItemGroup>
 
 </Project>
