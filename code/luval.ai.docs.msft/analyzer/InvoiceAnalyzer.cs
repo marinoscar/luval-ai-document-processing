@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace luval.ai.docs.msft.analyzer
 {
-    public class InvoiceAnalyzer
+    public class InvoiceAnalyzer : IInvoiceAnalyzer
     {
 
         public InvoiceAnalyzer(string endpoint, string key) : this(CreateClient(endpoint, key))
